@@ -64,7 +64,21 @@ nav a:hover {
 
 .hero {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 8rem 2rem;
+    background: url('https://images.unsplash.com/photo-1507296459426-2af5b6833a88?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==') no-repeat center center/cover;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 26, 0.7);
+    z-index: -1;
 }
 
 .hero h1 {
@@ -111,6 +125,14 @@ h2 {
     max-width: 400px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px;
+    overflow: hidden;
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .service-card:hover, .pricing-card:hover {
