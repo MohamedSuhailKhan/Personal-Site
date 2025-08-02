@@ -109,30 +109,23 @@ h2 {
     margin-bottom: 3rem;
 }
 
-.service-container, .pricing-container {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+.service-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
 }
 
-.service-card, .pricing-card {
-    background: var(--card-background);
-    border: 2px solid var(--border-color);
-    padding: 2rem;
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.service-card img {
+.service-image img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-description h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .service-card:hover, .pricing-card:hover {
