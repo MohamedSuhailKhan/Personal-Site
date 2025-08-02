@@ -209,3 +209,9 @@ footer {
     margin-top: 2rem;
     border-top: 1px solid var(--border-color);
 }
+
+.centered-contact {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
