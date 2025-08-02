@@ -93,13 +93,14 @@ nav a:hover {
 }
 
 main {
-    max-width: 1200px;
+    /* Changed to 100% width to allow content to stretch across the page */
+    width: 100%;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0;
 }
 
 section {
-    padding: 4rem 0;
+    padding: 4rem 2rem; /* Added padding to all sections */
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -110,33 +111,62 @@ h2 {
 }
 
 .service-item {
+    /* Changed to a single column to stack items */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
     margin-bottom: 4rem;
 }
 
-.service-image img {
+.service-item img {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Updated styling for the service items to handle the new stacking layout */
+.service-item .service-image,
+.service-item .service-description {
+    width: 100%;
+}
+
+.service-item.reverse-layout {
+    display: flex;
+    flex-direction: column-reverse; /* Reverses the image and description order */
+}
+
 .service-description h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
-.service-card:hover, .pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px var(--secondary-color);
-    border-color: var(--secondary-color);
+.service-description p {
+    text-align: center;
 }
 
+/* On larger screens, revert to the side-by-side layout for services */
+@media (min-width: 768px) {
+    .service-item {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .service-item.reverse-layout {
+        flex-direction: row-reverse;
+    }
+
+    .service-description h3,
+    .service-description p {
+        text-align: left;
+    }
+}
+
+
+/* Styling for pricing cards to make them stretch across the page */
 .pricing-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* This will stack the cards vertically */
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -152,7 +182,14 @@ h2 {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    flex-direction: row-reverse; /* image on right */
+    flex-direction: column; /* Force cards to stack vertically on all screen sizes */
+    text-align: center;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--secondary-color);
+    border-color: var(--secondary-color);
 }
 
 .pricing-card img {
@@ -174,6 +211,11 @@ h2 {
     text-align: center;
     margin-top: 2rem;
     font-style: italic;
+}
+
+#contact .contact-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 #contact form {
@@ -225,15 +267,3 @@ footer {
     text-align: center;
     margin-bottom: 2rem;
 }
-
-@media (max-width: 768px) {
-    .pricing-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .pricing-card img {
-        margin-bottom: 1rem;
-    }
-}
-
